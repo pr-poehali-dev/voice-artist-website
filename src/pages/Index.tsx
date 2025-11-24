@@ -109,8 +109,7 @@ const Index = () => {
                 Ваш голос для любого проекта
               </h1>
               <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-                Профессиональная озвучка для рекламы, аудиокниг, видео и корпоративных проектов. 
-                Более 10 лет опыта работы в индустрии.
+                Профессиональное озвучивание для ваших проектов. От книг до рекламы - ваш текст зазвучит уверенно и ярко!
               </p>
               <div className="flex gap-4">
                 <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground">
