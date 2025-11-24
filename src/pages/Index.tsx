@@ -3,6 +3,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import Icon from "@/components/ui/icon";
+import AudioPlayer from "@/components/AudioPlayer";
+import VideoPlayer from "@/components/VideoPlayer";
 import { useState } from "react";
 
 const Index = () => {
@@ -54,17 +56,21 @@ const Index = () => {
     {
       type: "audio",
       title: "Коммерческая реклама - Премиум бренд",
-      description: "30-секундный рекламный ролик",
+      description: "30-секундный рекламный ролик для премиального автомобильного бренда",
+      src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
     },
     {
       type: "video",
       title: "Корпоративная презентация",
       description: "Озвучка презентации для международной компании",
+      src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      poster: "https://peach.blender.org/wp-content/uploads/title_anouncement.jpg?x11217",
     },
     {
       type: "audio",
       title: "Аудиокнига - Детектив",
-      description: "Фрагмент из аудиокниги",
+      description: "Фрагмент из аудиокниги в жанре детектив",
+      src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
     },
   ];
 
@@ -170,27 +176,36 @@ const Index = () => {
           <h2 className="text-4xl font-heading font-bold text-primary mb-12 text-center">
             Портфолио
           </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 gap-8">
             {portfolio.map((item, index) => (
-              <Card key={index} className="hover:shadow-xl transition-shadow animate-fade-in">
+              <Card key={index} className="hover:shadow-xl transition-shadow animate-fade-in overflow-hidden">
                 <CardContent className="p-6">
-                  <div className="flex items-center justify-center w-16 h-16 bg-accent/10 rounded-full mb-4">
-                    <Icon name={item.type === "audio" ? "Volume2" : "Video"} size={32} className="text-accent" />
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="flex items-center justify-center w-12 h-12 bg-accent/10 rounded-full flex-shrink-0">
+                      <Icon name={item.type === "audio" ? "Volume2" : "Video"} size={24} className="text-accent" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-heading font-semibold">{item.title}</h3>
+                      <p className="text-sm text-muted-foreground">{item.description}</p>
+                    </div>
                   </div>
-                  <h3 className="text-xl font-heading font-semibold mb-2">{item.title}</h3>
-                  <p className="text-muted-foreground mb-4">{item.description}</p>
-                  <Button variant="outline" className="w-full">
-                    <Icon name="Play" size={16} className="mr-2" />
-                    Воспроизвести
-                  </Button>
+                  
+                  {item.type === "audio" ? (
+                    <AudioPlayer src={item.src} title={item.title} />
+                  ) : (
+                    <VideoPlayer src={item.src} title={item.title} poster={item.poster} />
+                  )}
                 </CardContent>
               </Card>
             ))}
           </div>
-          <div className="text-center mt-8">
-            <p className="text-muted-foreground">
+          <div className="text-center mt-12">
+            <p className="text-muted-foreground mb-4">
               Это лишь небольшая часть моих работ. Свяжитесь со мной для получения полного портфолио.
             </p>
+            <Button className="bg-accent hover:bg-accent/90">
+              <a href="#contact">Запросить полное портфолио</a>
+            </Button>
           </div>
         </div>
       </section>
