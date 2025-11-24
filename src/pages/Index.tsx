@@ -115,12 +115,6 @@ const Index = () => {
                 <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground">
                   <a href="#contact">Заказать озвучку</a>
                 </Button>
-                <Button size="lg" variant="outline">
-                  <a href="#portfolio" className="flex items-center gap-2">
-                    <Icon name="Play" size={20} />
-                    Послушать примеры
-                  </a>
-                </Button>
               </div>
             </div>
             <div className="animate-scale-in">
